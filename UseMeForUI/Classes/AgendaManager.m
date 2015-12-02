@@ -16,14 +16,18 @@
     static id sharedInstance;
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
+        [sharedInstance initControls];
     });
     return sharedInstance;
 }
 
+- (void)initControls{
+    selfBundle = [NSBundle bundleForClass:[self class]];
+}
 
 -(UITableViewCell*)cellForProductForTableView:(UITableView*)tableView
 {
-    [tableView registerNib:[UINib nibWithNibName:@"ProductCell" bundle:nil] forCellReuseIdentifier:@"AgendaProductCell"];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductCell" bundle:selfBundle] forCellReuseIdentifier:@"AgendaProductCell"];
     ProductTableViewCell *result = [tableView dequeueReusableCellWithIdentifier:@"AgendaProductCell"];
     [result.customCellTitle setText:@"I AM A SUPER CELL"];
     return result;
@@ -32,7 +36,7 @@
 
 -(UIViewController*)productController
 {
-    UIStoryboard *mainSoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *mainSoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:selfBundle];
     UIViewController *mainViewController = [mainSoryboard instantiateInitialViewController];
     return mainViewController;
 }

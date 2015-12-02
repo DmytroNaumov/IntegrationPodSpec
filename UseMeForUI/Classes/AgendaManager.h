@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface AgendaManager : NSObject
+@interface AgendaManager : NSObject{
+    NSBundle *selfBundle;
+}
 
 +(instancetype)sharedManager;
 
