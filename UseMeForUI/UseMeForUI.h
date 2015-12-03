@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AgendaViewController.h"
-
+#import "AgendaManager.h"
 #define AGENDA_STORYBOARD_NAME @"main.storyboard"
 
 
